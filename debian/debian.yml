@@ -1,0 +1,21 @@
+version: '2'
+services:
+  debian_jekyll:
+    build:
+      context: ./jekyll
+    volumes:
+      - "/data/debian_jekyll/html:/var/www/"
+      #- "/data/alpine_jekyll/etc/apache2_conf_local/apache2:/etc/apache2"
+    ports:
+      - "8086:4000"
+    restart: always
+    #environment:
+      #
+  apache:
+    build:
+      context: ./apache
+    volumes:
+      - "/root/html:/var/www/html"
+    ports:
+      - "8085:80"
+    restart: always

@@ -1,0 +1,31 @@
+version: '2'
+services:
+  alpine_jekyll:
+    build:
+      context: .
+    volumes:
+      - "/root/html:/var/www/html"
+      #- "/data/alpine_jekyll/etc/apache2_conf_local/apache2:/etc/apache2"
+    ports:
+      - "8095:80"
+    restart: always
+    #environment:
+      #
+  apache:
+    build:
+      context: ./apache
+    volumes:
+      - "/root/html:/var/www/localhost/htdocs"
+      #- "/etc/apache2:/etc/apache2"
+    ports:
+      - "8096:80"
+    restart: always
+  django:
+    build:
+      context: ./django
+    #volumes:
+      #- "/root/html:/var/www/localhost/htdocs"
+      #- "/etc/apache2:/etc/apache2"
+    ports:
+      - "8097:8000"
+    restart: always
