@@ -4,9 +4,10 @@ LABEL maintainer Adrián <erknrio@gmail.com>
 
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y apache2
+    apt-get install -y vim wget apache2
+
     
-WORKDIR /var/www/
+WORKDIR /var/www/html/
 ENV TERM xterm
 
 CMD apachectl -DFOREGROUND
